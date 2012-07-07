@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+	{% load poll_extras %}
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- styles -->
+	<link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.css">	
+	{% block css %}{% endblock %}
+
+	<!-- soporte para elementos HTML5 en IE6-8 -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!--iconos
+    <link rel="shortcut icon" href="{{ STATIC_URL }}bootstrap/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ STATIC_URL }}bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ STATIC_URL }}bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ STATIC_URL }}bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}bootstrap/ico/apple-touch-icon-67-precomposed.png">-->
+
+</head>
+<body data-spy="scroll" data-target=".subnav" data-offset="50">
+	<!-- navbar -->
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<!--
+
+				-->
+				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a  class="brand" href="/">Municipalidad Distrital de Reque</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li><a class="" href="/vehiculos/">Vehiculos</a></li>
+						<li><a href="/multas/">Multas</a></li>
+						<li><a href="/pagos/">Pagos</a></li>						
+						{% if user.id %}
+						<li><a href="/{{ user.username }}/"><i class="icon-user icon-white"></i> {{ user.last_name }}, {{ user.first_name }}</a></li>
+						<li><a href="/logout/"><i class="icon-remove-sign icon-white"></i> Cerrar Sessión</a></li>
+						{% else %}							
+						<li><a href="/login/"><i class="icon-white icon-ok-sign"></i> Iniciar Sesión</a></li>			
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<!-- header -->
+		<header>
+			<div class="inner hero-unit">
+				<div class="logo">
+				<img width="80px" height="120px" src="{{ STATIC_URL }}images/logo.jpg" alt="logo">
+				</div>
+				<h1><em>Municipalidad Distrital de Reque</em></h1>
+				<h2><em>Area de Transito</em></h2>
+			</div>
+		</header>
+
+	<section id="responsive">
+ 
+  		<div class="row">
+  			{% block menu %}
+  			{% endblock %}
+  		</div>
+  		<div class="row">
+  			{% block content %}
+  			{% endblock %}
+  		</div>
+	</section>
+
+	<!--footer-->
+	<footer class="footer">
+	    <p class="pull-right"><a href="#">Arriba</a></p>
+	    <p>Diseñado y Desarrollado por  <a href="http://twitter.com/monocix" target="_blank">@monocix</a>
+	     <p>Codigo licenciado bajo licencia <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentacion licencia <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>       
+	 </footer>
+	</div>
+	
+	<!-- javascript -->
+	<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>	
+	<script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
+	{% block js %}
+	{% endblock %}
+</body>
+</html>

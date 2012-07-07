@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+	Listado de Propietarios
+{% endblock %}
+{% block menu %}
+<ul>
+	<li><a href="/vehiculos/add">Nuevo</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+        <form id = "frm_search_propietario" method="get" action="/lista/propietario">
+        <input type="text" name="search_propietario" />
+                <button>Realizar Busqueda  </button>
+        </form>
+            <th>Busque Propietario por Nombre </th>
+	<table width="80%" border="1">
+		<tr>
+			<th>Nombres</th>
+			<th>direccion</th>
+			<th>Telefono</th>
+			<th>Movil</th>
+                        <th>email</th>
+			<th>tipo</th>
+		</tr>
+			{% for datos in lista_propietario %}
+				<tr>
+					<td>{{ datos.nombre }}</td>
+					<td>{{ datos.direccion }}</td>
+					<td >{{ datos.telefono }} </td>
+					 <td> {{ datos.movil }}</td>
+
+					<td>{{ datos.email }}</td>
+					<td>{{ datos.tipo }}</td>
+
+				</tr>
+
+			{% endfor %}
+	</table>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}
+        busqueda de papeletas
+{% endblock%}
+{% block scripts %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+	<script src="/static/js/vehiculos/new_vehiculo.js"></script>
+	<script src="/static/js/jquery.combobox.js"></script>
+	<script src="https://raw.github.com/carhartl/jquery-cookie/master/jquery.cookie.js"></script>
+	<link rel="stylesheet" type="text/css" href="/static/css/custom-theme/jquery-ui-1.8.20.custom.css"/>
+	<link rel="stylesheet" type="text/css" href="/static/css/vehiculos.css"/>
+{% endblock %}
+{% block menu %}
+    <ul>
+           <li> <a class="save" href="/multas/">Registrar Multa </a></li>
+           <li><a href="/pagos/">pagos</a></li>
+
+    </ul>
+{% endblock %}
+
+{% block content%}
+        <h2> Busqueda de papeletas por nro de placa </h2>
+            <form id="frm_search_papeleta" method="get" action="">
+                <input type="text" name="search_papeleta" />
+                <button>Realizar Busqueda  </button>
+
+            </form>
+<table width="100%" class="display"  id="table">
+	<thead>
+		<tr>
+			<th>Placa</th>
+			<th>Propietario</th>
+			<th>Conductor</th>
+			<th>Infraccion</th>
+			<th>sancion</th>
+			<th>fecha Multa</th>
+			<th>Fecha Vencimiento</th>
+			<th>estado</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+            {% for vehiculo in papeleta %}
+				<tr>
+					<td>{{ vehiculo.0 }}</td>
+					<td>{{ vehiculo.1 }}</td>
+					<td>conducto aqui </td>
+					<td>{{ vehiculo.2 }}</td>
+					<td>{{ vehiculo.3 }}</td>
+					<td>{{ vehiculo.4 }}</td>
+					<td>{{ vehiculo.5 }}</td>
+					<td>{{ vehiculo.6 }}</td>
+					<td>{{ vehiculo.7 }}</td>
+
+
+
+				</tr>
+			{% endfor %}
+		</tbody>
+
+        </table>
+
+{% endblock %}

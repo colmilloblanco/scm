@@ -1,0 +1,12 @@
+ul{
+	list-style: none;
+}
+
+form ul li {
+	display: inline-block;
+	width: 40%;
+}
+
+.errorlist{
+	color: #da4f49;
+}

@@ -1,0 +1,264 @@
+{% extends 'base.html' %}
+{% block title %}
+	Nuevo Vehiculo
+{% endblock %}
+{% block css %}	
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/custom-theme/jquery-ui-1.8.20.custom.css"/>
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/vehiculos/add.css"/>
+{% endblock %}
+{% block menu %}
+<ul>
+	<li><a class="list" href="/vehiculos/">Listado</a></li>
+
+</ul>
+{% endblock %}
+{% block content %}
+	<form class="well" id="frm_new_vehiculo" method="POST" action="">{% csrf_token %}
+	
+		<ul>
+		{{ form.as_ul}}
+		 
+		</ul>
+		<br/>
+		<button class="save">Registar</button>
+		<br/>
+	</form>
+	
+		<form id="frm-propietario" class="modal fade hide"  method="POST">{% csrf_token %}
+			<div class="modal-head">
+				<a href="" class="close" data-dismiss="modal">x</a>
+				<h3><i class="icon-hand-right"></i> Nuevo Propietario</h3>
+			</div>
+			<div class="modal-body">
+				<ul>
+				<li>
+					<label for="id_tipo_persona">Tipo de Persona:</label>
+					<select name="tipo_persona" id="id_tipo_persona">
+						<option value="N">Natural</option>
+						<option value="J">Juridico</option>
+					</select>
+				</li>
+				<li>
+					<label for="id_nombre">Nombre:</label>
+                     <textarea id="id_nombre" name="nombre" cols="40" rows="2"></textarea>
+				</li>
+				<li>
+					<label for="id_direccion">Direccion:</label>
+					<textarea id="id_direccion" name="direccion" cols="40"rows="2"></textarea>
+			    </li>
+				<li>
+					<label for="id_telefono">Telefono:</label><input type="text" id="id_telefono" maxlength="10" name="telefono" >
+				</li>
+				  <li>
+				  	<label for="id_movil">Movil:</label><input type="text" id="id_movil" maxlength="12" name="movil">
+				</li>
+				<li>
+					<label for="id_email">Email:</label><input type="text" id="id_email" name="email">
+				</li>
+				<li>
+					<label for="id_ruc">Ruc:</label>
+					<input type="text" id="id_ruc" maxlength="11" name="ruc">
+				</li>
+				<li>
+					<label for="id_dni">Dni:</label>
+					<input type="text" id="id_dni" maxlength="8" name="dni">
+				</li>
+				
+			</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="btn-add-propietario" class="btn btn-success btn-large" >Registrar</button>
+				<button class="btn" type="button" data-dismiss="modal">Cancelar</button>
+			</div>
+			
+		</form>
+	
+	
+		<form id="frm-combustible" method="POST" class="modal fade hide ">{% csrf_token %}
+			<div class="modal-head">
+				<a href="" class="close" data-dismiss="modal">x</a>
+				<h3><i class="icon-hand-right"></i> Nuevo Combustible </h3>
+			</div>
+			<div class="modal-body">
+				
+			<ul>
+			 	<li>
+			 		<label for="id_combustible">Combustible</label><input type="text" id="id_combustible" name="nombre"></li>
+			 </ul>
+			</div>
+			 <div class="modal-footer">
+				<button type="button" id="btn-add-combustible" class="btn btn-success btn-large" >Registrar</button>
+				<button class="btn" type="button" data-dismiss="modal">Cancelar</button>
+			</div>
+		</form>
+
+	    <section id="ssede" class="modal fade hide ">
+		<form id="frm-sede" method="POST" >{% csrf_token %} 
+			<div class="modal-head">
+				<a href="" class="close" data-dismiss="modal">x</a>
+				<h3><i class="icon-hand-right"></i> Nueva Sede </h3>
+			</div>
+			<div class="modal-body">
+			<ul>
+			 	<li>
+			 		<label for="id_sede">Sede</label><input type="text" id="id_sede" name="descripcion"></li>
+			 </ul>
+			 </div>
+			 <div class="modal-footer">
+				<button type="button" id="btn-add-sede" class="btn btn-success btn-large" >Registrar</button>
+				<button class="btn" type="button" data-dismiss="modal">Cancelar</button>
+			</div>
+		</form>
+     </section>
+	<section id="scarroceria" style="display:none" class="modal fade hide ">
+		<form id="frm-carroceria" method="POST" >{% csrf_token %}
+			<div class="modal-hade">
+			<a href="" class="close" data-dismiss="modal">x</a>
+			<h3><i class="icon-hand-right"></i> Nueva Carroceria </h3>
+			</div>
+		<div class="modal-body">
+			<ul>
+			 	<li>
+			 		<label for="id_nombre">Carroceria</label><input type="text" id="id_nombre" name="nombre">
+			 	</li>
+			 </ul>
+		</div>				
+		<div class="modal-footer">
+			<button type="button" id="btn-add-carroceria"class="btn btn-success btn-large">Registra</button>
+       		 <button type="button" class="btn" data-dismiss="modal"> Cancelar </button>
+       	 </div>
+		</form>
+	</section>
+	<section id="scolor" style="display:none;" class="modal  fade hide ">
+		<form id="frm-color" method="POST">{% csrf_token %}
+			<div class="moda-hade">
+				<a href="" class="close" data-dismiss="modal">X</a>
+				<h3><i class="icon-hand-right"></i>Nueva Color</h3>
+			</div>
+			<div class="modal-body">
+				<ul>
+			 	<li><label for="id_color">Color</label><input type="text" id="id_color" name="descripcion"></li>
+			 </ul>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success btn-large"type="button" id="btn-add-color">Registrar</button>
+				<button class="btn" data-dismiss="modal">Cancelar</button>			
+			</div>
+		</form>
+	</section>
+	<section id="sasociacion" style="display:none;" class="modal fade hide">
+		<form id="frm-asociacion" method="POST"> {% csrf_token %}
+			<div class="modal-hade">
+				<a href="" class="close" data-dismiss="modal" >x</a>
+				<h3><i class="icon-hand-right"></i> Nueva Asociación</h3>
+			</div>
+			<div class="modal-body">
+				
+			<ul>
+			 	<li>
+			 		<label for="id_nombre">Nombre:</label><input type="text" id="id_nombre" name="nombre">
+			 	</li>
+
+			 	<li>
+			 		<label for="id_direccion">Direccion:</label><input type="text" id="id_direccion" name="direccion">
+			 	</li>
+			
+			 </ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button"class="btn btn-success btn-large" id="btn-add-asociacion">Registrar</button>
+				<button class="btn" data-dismiss="modal">Cancelar</button>
+			</div>
+		</form>
+	</section>
+	<section id="smarca" style="display:none" class="modal fade hide">
+		<form id="frm-marca" method="POST">{% csrf_token %}
+
+			<div class="modal-hade">
+				<a href="" class="close" data-dismiss="modal">x</a>
+				<h3><i class="icon-hand-right"></i>Nueva Marca </h3>
+			</div>
+			<div class="modal-body">
+				
+			<ul>
+				<li>
+					<label for="id_descripcion">Marca</label><input type="text" id="id_descripcion" name="descripcion"></li>
+			</ul>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success btn-large "id="btn-add-marca" type="button">Registrar</button>
+				<button class="btn" data-dismiss="modal">Cancelar</button>
+			</div>
+		</form>
+	</section>
+	
+	<section id="smodelo" style="display:none;" class="modal fade hide ">
+		<form id="frm-modelo" method="POST">{% csrf_token %}
+			<div class="modal-hade">
+				<a href="" class="close" data-dismiss="modal">x</a>
+				<h3><i class="icon-hand-right"></i> Nuevo Modelo</h3>
+			</div>
+			<div class="modal-body">	
+			<ul>
+				 <li>
+                	<label for="id_descripcion">Modelo</label>
+                	<input type="text" id="id_descripcion" name="descripcion">
+                </li>
+			</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button"class="btn btn-success btn-large" id="btn-add-modelo">Registrar</button>
+				<button class="btn" data-dismiss="modal">
+					Cancelar</button>
+			</div>
+		</form>
+	</section>
+	<section id="sclase" style="display:none;" class="modal hide fade">
+		<form id="frm-clase" method="POST">{% csrf_token %}
+			<div class="modal-hade">
+				<a href="" class="close" data-dismiss="model">x</a>
+				<h3><i class="icon-hand-right"></i>Nueva Clase</h3>
+			</div>
+			<div class="modal-body">
+				
+			<ul>
+             <li>
+             	<label for="id_descripcion">Clase</label><input type="text" id="id_descripcion" name="descripcion">
+             </li>
+          	</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success btn-large" id="btn-add-clase" >Registrar</button>
+				<button class="btn"data-dismiss="modal" >Cancelar</button>
+			</div>
+		</form>
+	</section>
+	<section id="scategoria" style="display:none;" class="modal hide fade">
+		<form method="POST" id="frm-categoria">{% csrf_token %}
+			<div class="modal-hade">
+				<a href="" class="close" data-dismiss="modal">x</a>
+				<h3><i class="icon-hand-right"></i>Nueva Categoria</h3>
+			</div>
+			<div class="modal-body">
+				
+			<ul>
+				<li>
+					<label for="id_categoria">Categoria</label>
+					<input type="text" id="id_categoria" name="categoria">
+				</li>
+			</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="btn-add-categoria"class="btn btn-success btn-large">Registrar</button>
+				<button class="btn" data-dismiss="modal">Cancelar</button>
+			</div>
+		</form>
+	</section>
+
+{% endblock %}
+{% block js %}
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+	<script src="/static/js/vehiculos/add.js"></script>
+	<script src="/static/js/jquery.combobox.js"></script>
+	<script src="https://raw.github.com/carhartl/jquery-cookie/master/jquery.cookie.js"></script>
+{% endblock %}

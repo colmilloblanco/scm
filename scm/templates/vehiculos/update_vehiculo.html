@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+	Actualizar Vehiculo
+{% endblock %}
+
+{% block menu %}
+<ul>
+	<li><a class="list" href="/vehiculos/">Listado</a></li>
+	<li><a class="add" href="/vehiculos/add">Nuevo</a></li>
+
+</ul>
+{% endblock %}
+{% block content %}
+	<form class="well" id="frm_update_vehiculo" method="POST" action="">{% csrf_token %}
+		<ul>
+			{{ form.as_ul }}
+		</ul>
+		<button> Registrar</button>
+	</form>
+{% endblock %}
+

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}
+        busqueda de papeletas
+{% endblock%}
+{% block menu %}
+    <ul>
+           <li> <a href="/vehiculos/add/soat/">add Soat </a></li>
+           <li><a href="/pagos/">pagos</a></li>
+
+    </ul>
+{% endblock %}
+
+{% block content%}
+      <table>
+      <tr>
+        <th>Placa</th>
+        <th>Fecha Emision</th>
+        <th>Fecha Caducidad</th>
+        <th>Codigo del Soat</th>
+        <th>Condicion</th>
+       </tr>
+    
+         {% for vehiculo in meses %}
+          
+          
+            
+            {% for vehiculo in vehiculo.soat %}
+           <tr> 
+             
+            <tr><td> {{ vehiculo.vehiculo_id }}</td>
+            <td> {{ vehiculo.fecha_caducidad }}</td>
+            <td>{{ vehiculo.codigo_soat }}</td>
+            <td> caducado </td>
+            <td>
+            <a href="/vehiculos/update/soat/{{ vehiculo.vehiculo_id }}">Editar</a>
+           </td>
+         </tr>
+         
+         {% endfor %}
+              
+          {% endfor %}
+      
+
+   </table>
+
+
+{% endblock %}

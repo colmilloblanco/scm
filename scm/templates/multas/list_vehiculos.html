@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}
+	Listado de Vehiculos
+{% endblock %}
+{% block scripts %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+	
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.1/jquery.dataTables.min.js"></script>
+	<script src="/static/js/vehiculos/app.js"></script>
+    <script src="/static/js/vehiculos/new_soat.js"></script>
+	<link rel="stylesheet" type="text/css" href="/static/css/custom-theme/jquery-ui-1.8.20.custom.css"/>
+	<link rel="stylesheet" type="text/css" href="/static/css/vehiculos.css"/>
+{% endblock %}
+{% block menu %}
+<ul >
+	
+	<li><a class="add" href="/vehiculos/add/">Nuevo Vehiculo</a></li>
+	<li><a class="" href="/multas/add/policia/">Nuevo Policia </a></li>
+	<li><a class="add" href="#">Papeletas Cada Vehiculo </a></li>
+</ul>
+{% endblock %}
+{% block content %}
+
+<table width="100%" class="display" id="table">
+	<thead>
+		<tr>
+			<th>Placa</th>
+			<th>Propietario</th>
+			<th>Clase</th>
+			<th>Marca</th>
+			<th>Modelo</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+			{% for vehiculo in vehiculos %}
+				<tr>
+					
+					<td>{{ vehiculo.0 }}</td>
+					<td>{{ vehiculo.1 }}</td>
+					<td>
+						{{ vehiculo.2 }}-
+						{{ vehiculo.3 }}
+					</td>
+					<td>{{ vehiculo.4 }}</td>
+					<td>{{ vehiculo.5 }}</td>
+					<td>
+						<a href="/multas/vehiculos/add/papeleta/{{ vehiculo.6 }}">Papeleta</a>
+					</td>
+
+				</tr>
+			{% endfor %}
+
+	</tbody>
+</table>
+
+{% endblock %}

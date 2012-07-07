@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load poll_extras %}
+{% block title %} Tarjeta de Operatividad  {% endblock %}
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/custom-theme/jquery-ui-1.8.20.custom.css"/>
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/vehiculos/add.css"/>
+{% endblock %}
+{% block content %}
+<ul class="breadcrumb">
+	<li><a class="btn btn-success" href="#"><i class="icon-file icon-white"></i> Listado</a></li>
+</ul>
+<form class="well "method="POST" action="">{% csrf_token %}
+		<ul>
+			{{ tarjeta_operatividad.as_ul }}
+		</ul>
+		<button class="btn">Registrar </buton>
+</form>
+{% endblock %}
+{% block js %}
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+	<script src="/static/js/vehiculos/add.js"></script>
+	<script src="/static/js/jquery.combobox.js"></script>
+	<script src="https://raw.github.com/carhartl/jquery-cookie/master/jquery.cookie.js"></script>
+{% endblock %}

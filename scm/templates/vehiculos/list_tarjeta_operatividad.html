@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}
+        Listado de Tarjetas de Operatividad
+{% endblock%}
+{% block menu %}
+    <ul class="breadcrumb">
+           <li> <a href="/tarjeta-operatividad/add/">Nueva Tarjeta </a></li>
+           <li><a href="/pagos/">pagos</a></li>
+
+    </ul>
+{% endblock %}
+
+{% block content %}
+      <table class="table table table-striped table-bordered table-condensed" >
+      <tr>
+        <th>Placa</th>
+        <th>Serie</th>
+        <th>Propietario</th>
+        <th>Asociacion</th>
+        <th>Soat</th>
+        <th>Fecha Emision</th>
+        <th>Fecha Caducidad</th>
+        <th>Condicion</th>
+        <th>&nbsp;</th>
+       </tr>
+    
+
+         {% for vehiculo in tarjeta %}  
+
+          <tr>
+            <td>{{ vehiculo.detalle_vehiculo.vehiculo.nro_placa }}</td>
+            <td>{{ vehiculo.detalle_vehiculo.vehiculo.serie}}
+            <td>{{ vehiculo.detalle_vehiculo.propietario.nombre }}</td>
+            <td> {{ vehiculo.detalle_vehiculo.asociacion.nombre }} </td>
+           {% for soat in soat %}
+            
+            {% if soat.vehiculo == vehiculo.detalle_vehiculo.vehiculo %}
+             <td>{{ soat.fecha_caducidad }} </td>
+            <td> {{ vehiculo.fecha_expedicion }}</td>
+          {% endif %}
+            {% endfor %}
+            <td> {{ vehiculo.fecha_caducidad }}</td>
+              {% if vehiculo.estado %}
+              <td> vigente </td>
+              {% else %}
+              <td>caducado</td>
+              {% endif %}
+            <td>
+            <a href="#">Editar</a>
+           </td>
+         
+
+         {% endfor %}
+         {% with total=tarjeta.count %}
+         <td>{{ total }} tarjeta  {{ total|pluralize }}</td>
+         {% endwith %}
+       </tr>
+         
+   </table>
+
+
+{% endblock %}
+{% block js %}
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/jquery.dataTables.min.js"></script>
+<script src="{{ STATIC_URL }}js/vehiculos/index.js"></script>
+{% endblock %}
+    
+            
+         

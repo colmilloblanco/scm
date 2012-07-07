@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load poll_extras %}
+{% block title %}Papeleta{% endblock %}
+{% block css %}
+	
+{% endblock %}
+{% block content %}
+<ul class="breadcrumb">
+	<li><a class="btn btn-success" href="#"><i class="icon-file icon-white"></i> Listado</a></li>
+</ul>
+<form method="POST" action="">{% csrf_token %}
+		
+		<ul>
+			{{ licencia.as_ul }}
+		</ul>
+		<button class="btn">Registrar </buton>
+		
+	</form>
+{% endblock %}
+{% block js %}
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/jquery.dataTables.min.js"></script>
+<script src="{{ STATIC_URL }}js/pagos/index.js"></script>
+{% endblock %}

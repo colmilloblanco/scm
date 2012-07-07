@@ -1,0 +1,89 @@
+
+{% extends 'base.html' %}
+{% block title %}Listado de Vehiculo{% endblock %}
+{% block css %}
+	
+{% endblock %}
+
+{% block content %}
+
+<ul class="breadcrumb">
+	<li>
+		<a class="btn btn-success" href="/vehiculos/add/"><i class="icon-file icon-white"></i> Nuevo Vehiculo</a>
+	</li>
+	<li >
+		<a  class="btn btn-success" href="/tarjeta-operatividad/add"><i class="icon-file icon-white"></i> Tarjeta De Operatividad
+		</a>
+	</li>
+	<li>
+		<a class="btn btn-success" href="/vehiculos/list/soat/"><i class=" icon-list-alt icon-white "></i>Soat
+		</a>
+	</li>
+	<li><a href="/licencia/" class="btn btn-success">
+		Licencia Conducir </a>
+	</li>
+
+</ul>
+<table class="table table table-striped table-bordered table-condensed">
+
+	<thead>
+		<tr>
+			<th>&nbsp;</th>
+			<th>Placa</th>
+			<th>Propietario</th>
+			<th>Clase</th>
+			<th>Marca</th>
+			<th>Modelo</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	
+		
+	<tbody>
+		{% for vehiculo in detallevehiculos %}
+				<tr>
+					<td><input type="checkbox" name="vehiculo"  id="{{ vehiculo.vehiculo_id }}">
+					{% if vehiculo.vehiculo.nro_placa %}
+					 <td> {{ vehiculo.vehiculo.nro_placa }}</td>
+					 {% else %}
+					<td>En tramite </td>
+					{% endif %}
+					<td>{{ vehiculo.propietario }}</td>
+					<td>
+						{{ vehiculo.vehiculo.categoria.descripcion }}-
+						{{ vehiculo.vehiculo.clase.descripcion }}
+					</td>
+					<td>{{ vehiculo.vehiculo.marca.descripcion }}</td>
+					<td>{{ vehiculo.vehiculo.modelo.descripcion }}</td>
+					
+					<td>
+						<a href="/vehiculos/update/{{ vehiculo.vehiculo_id }}"><i class="icon-edit"></i> Editar</a>
+					</td>
+					
+				</tr>
+			{% endfor %}
+	
+			
+	</tbody>
+</table>
+	<section id="ssoat" style="display:none">
+		<form id="frm-soat" method="POST">{% csrf_token %}
+			<ul>
+				<li>
+					<label for="id_fecha_emision">Fecha Emision</label><input type="text" id="id_fecha_emision" name="fecha_emision">
+				</li>
+				<li>
+					<label for="id_fecha_caducidad">fecha caducidad</label><input type="" id="id_fecha_caducidad" name="fecha_caducidad">
+				</li>
+				
+			</ul>
+		</form>
+	</section>
+{% endblock %}
+{% block js %}
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+ 	
+ -->
+ <script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/jquery.dataTables.min.js"></script>
+<script src="{{ STATIC_URL }}js/vehiculos/index.js"></script>
+{% endblock %}

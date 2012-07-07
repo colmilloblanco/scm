@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="" method="post" class="modal fade hide" id="frm-login">{% csrf_token %}
+	<div class="modal-header">
+		<a href="#" class="close" data-dismiss="modal">x</a>
+		<h3><i class="icon-hand-right"></i> Inicio de sesión</h3>
+	</div>
+	<div class="modal-body">
+		<div class="alert alert-error">
+			<a href="#"  class="close" data-dismiss="alert">x</a>
+			<h3 class="alert-heading">Error !</h3>
+			Usuario y contraseña no validos o no existen
+		</div>
+		<ul>
+		{{ form.as_ul }}
+		</ul>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-success btn-large"><i class="icon-ok-sign icon-white"></i> Ingresar</button>
+		<button class="btn" data-dismiss="modal" type="button"><i class="icon-remove-sign"></i> Cancelar</button>
+	</div>
+</form>
+{% endblock %}
+{% block js %}
+<script src="{{ STATIC_URL }}js/login.js"></script>
+{% endblock %}

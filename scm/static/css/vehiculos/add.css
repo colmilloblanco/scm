@@ -1,0 +1,93 @@
+/*
+	@style 		vehiculos
+	@version 	1.0
+	@author 	Alex Neyra
+*/
+
+/*
+-----------------------------------------------
+@all
+-----------------------------------------------
+-----------------------------------------------
+*/
+
+body{
+
+}
+
+header div{
+	display: inline-block;
+	vertical-align: top;
+}
+
+h1{
+	color:#E04936;
+	text-shadow: 2px 2px 3px rgba(45, 45, 45, 0.5);
+}
+
+header div > h2{
+	color:#54960D;
+	font-size:120%;
+	text-shadow: 2px 2px 3px rgba(45, 45, 45, 0.5);
+}
+
+nav{
+	margin: 15px  0 15px 0;
+}
+
+ul{
+	list-style:none;
+	margin: 0;
+	padding: 0;
+}
+
+
+#frm_new_vehiculo{
+	padding: 20px ;
+}
+
+#frm_new_vehiculo  > ul > li{	
+	display: inline-block;
+	width:40%;
+	margin: 7px ;
+}
+
+#frm_new_vehiculo > ul > li > label{
+	font-family: verdana;
+	color: #2d2d2d;
+	display: inline-block;
+	font-weight:normal;
+	text-align:right;
+	width:100px;
+}
+
+#frm-propietario{
+	padding: 20px;
+}
+
+#frm-propietario > ul > li{
+	margin: 8px ;
+}
+
+#frm-propietario > ul > li > label{
+	display: inline-block;
+	text-align:right;
+	vertical-align: top;
+	width:100px;
+}
+
+#menu ul li{
+	display: inline-block;
+
+}
+
+#wrap{
+	margin: 0 auto;
+	max-width: 1024px;
+}
+
+.errorlist > li{
+	padding:  0 0 0 25% ;
+	color:#DE4A34;
+}
+

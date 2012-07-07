@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}
+	Listado de Vehiculos
+{% endblock %}
+{% block scripts %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.1/jquery.dataTables.min.js"></script>
+	<script src="/static/js/vehiculos/app.js"></script>
+	<link rel="stylesheet" type="text/css" href="/static/css/custom-theme/jquery-ui-1.8.20.custom.css"/>
+	<link rel="stylesheet" type="text/css" href="/static/css/vehiculos.css"/>
+	<link rel="stylesheet" type="text/css" href="/static/css/multas.css"/>
+{% endblock %}
+{% block menu %}
+<ul >
+	
+	<li><a class="add" href="">Nuevo</a></li>
+	<li><a class="add" href="">Papeletas Cada Vehiculo </a></li>
+</ul>
+{% endblock %}
+{% block content %}
+  <section>
+  	<form  class="ui-widget-header ui-corner-all" method="POST" id="frm-new-policia" action="">{% csrf_token %}
+  		<ul>
+  			{{ persona.as_ul }}
+  		</ul>
+  	</br>
+  		<button >Registar</button>
+  	</br>
+  	</form>
+  </section>
+{% endblock %}
