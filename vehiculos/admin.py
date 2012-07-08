@@ -16,18 +16,7 @@ class VehiculoAdmin(admin.ModelAdmin):
 	list_display = ('marca','serie', )
 	list_display_links = ('marca', 'serie', )
 
-	fieldsets = (
-		(None, {
-		'fields' : ('carroceria', 'combustible',)}
-		),
-		( 'Advanced options', { 
-		'classes':( 'collapse', ),
-		'fields': ('marca', 'modelo', 'serie')
-		 }
-		),
-
-	)
-   
+	   
 
 admin.site.register(PropietarioConductor)
 admin.site.register(Vehiculo, VehiculoAdmin)
